@@ -6,9 +6,9 @@
 \title{PX-Web Data by API}
 \usage{
 ApiData(urlToData, ..., getDataByGET = FALSE, returnMetaData = FALSE,
-  returnMetaValues = FALSE, returnApiQuery = FALSE,
-  defaultJSONquery = c(1, -2, -1), verbosePrint = FALSE,
-  use_factors = FALSE, urlType = "SSB")
+  returnMetaValues = FALSE, returnMetaFrames = FALSE,
+  returnApiQuery = FALSE, defaultJSONquery = c(1, -2, -1),
+  verbosePrint = FALSE, use_factors = FALSE, urlType = "SSB")
 }
 \arguments{
 \item{urlToData}{url to data or id of SSB data}
@@ -20,6 +20,8 @@ ApiData(urlToData, ..., getDataByGET = FALSE, returnMetaData = FALSE,
 \item{returnMetaData}{When TRUE, metadata returned}
 
 \item{returnMetaValues}{When TRUE, values from metadata returned}
+
+\item{returnMetaFrames}{When TRUE, values and valueTexts from metadata returned as data frames}
 
 \item{returnApiQuery}{When TRUE, JSON query returned}
 
@@ -39,39 +41,41 @@ A function to read PX-Web data into R via API. The example code reads data from 
 }
 \details{
 Each variable is specified by using the variable name as input parameter. The value can be specified as:  
-TRUE (all), FALSE (eliminated), imaginary value (top), original variable values or variable indices. Reversed 
-indices can be specified as negative values. Indices outside the range are removed. Variables not specified 
-is set to the value of defaultJSONquery whose default means the first and the two last elements. 
+TRUE (all), FALSE (eliminated), imaginary value (top), variable indices, 
+original variable id's (values) or variable labels (valueTexts). 
+Reversed indices can be specified as negative values. 
+Indices outside the range are removed. Variables not specified is set to the value of defaultJSONquery 
+whose default means the first and the two last elements. 
 
 The value can also be specified as a (unnamed) two-element list corresponding to the two 
-query elements, filter and values. I addition it possible with a single-element list.
+query elements, filter and values. In addition it possible with a single-element list.
 Then filter is set to 'all'. See examples.
 }
 \examples{
 \dontrun{
-
 ##### Readymade dataset by GET - works only for Statistics Norway readymade datasets
 x <- ApiData("http://data.ssb.no/api/v0/dataset/1066.json?lang=en", getDataByGET = TRUE)
 x[[1]]  # The label version of the data set
 x[[2]]  # The id version of the data set
 
 ##### Special output
-ApiData("http://data.ssb.no/api/v0/en/table/09941", returnMetaData = TRUE)  # meta data
-ApiData("http://data.ssb.no/api/v0/en/table/09941", returnMetaValues = TRUE)  # meta data values
-ApiData("http://data.ssb.no/api/v0/en/table/09941", returnApiQuery = TRUE)  # Query using defaults
+ApiData("http://data.ssb.no/api/v0/en/table/09941", returnMetaData = TRUE)   # meta data
+ApiData("http://data.ssb.no/api/v0/en/table/09941", returnMetaValues = TRUE) # meta data values
+ApiData("http://data.ssb.no/api/v0/en/table/09941", returnMetaFrames = TRUE) # list of data frames
+ApiData("http://data.ssb.no/api/v0/en/table/09941", returnApiQuery = TRUE)   # query using defaults
+
 
 ##### Ordinary use
 
-# Two specified and the last is default
-ApiData("http://data.ssb.no/api/v0/en/table/09941", NACE2007 = 0+10i, ContentsCode = TRUE)
+# NACE2007 as imaginary value (top 10), ContentsCode as TRUE (all), Tid is default
+ApiData("http://data.ssb.no/api/v0/en/table/09941", NACE2007 = 10i, ContentsCode = TRUE)
 
-# Two specified and the last is default – in Norwegian change en to no in url
-ApiData("http://data.ssb.no/api/v0/no/table/09941", NACE2007 = 0+10i, ContentsCode = TRUE)
-
+# Two specified and the last is default (as above) – in Norwegian change en to no in url
+ApiData("http://data.ssb.no/api/v0/no/table/09941", NACE2007 = 10i, ContentsCode = TRUE)
 
 # Number of residents (bosatte) last year, each region
 ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = TRUE, 
-        ContentsCode = "Bosatte", Tid = 0+1i)
+        ContentsCode = "Bosatte", Tid = 1i)
 
 # Number of residents (bosatte) each year, total
 ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = FALSE, 
@@ -86,25 +90,38 @@ ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = c("0811", "0301"),
         ContentsCode = 1, Tid = c(1, -1))
 
 
-
-##### Advanced use using list
-ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = list("03*"), 
-        ContentsCode = 1, Tid = 0+5i)
-ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = list("all", "03*"), 
-        ContentsCode = 1, Tid = 0+5i)
-ApiData("http://data.ssb.no/api/v0/en/table/04861", Region = list("filter", c("0811", "0301")), 
-        ContentsCode = 1, Tid = 0+5i)
-
 ##### Using id instead of url, unnamed input and verbosePrint
-ApiData(4861, c("0811", "0301"), 1, c(1, -1))
+ApiData(4861, c("0811", "0301"), 1, c(1, -1)) # same as below 
+ApiData(4861, Region = c("0811", "0301"), ContentsCode=1, Tid=c(1, -1)) 
+names(ApiData(4861,returnMetaFrames = TRUE))  # these names from metadata assumed two lines above
 ApiData("4861", c("0811", "0301"), 1, c(1, -1),  urlType="SSBen")
-ApiData("04861", c("0811", "0301"), 1, c(1, -1), verbosePrint = TRUE)
+ApiData("01222", c("0811", "0301"), c(4, 9:11), 2i, verbosePrint = TRUE)
 ApiData(1066, getDataByGET = TRUE,  urlType="SSB")
 ApiData(1066, getDataByGET = TRUE,  urlType="SSBen")
 
-##### Data from SCB and Statfi:
-ApiData("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy")
-ApiData("http://pxnet2.stat.fi/PXWeb/api/v1/en/StatFin/vrm/kuol/statfin_kuol_pxt_010.px")
-         
+
+##### Advanced use using list. See details above. Try returnApiQuery=TRUE on the same examples. 
+ApiData(4861, Region = list("03*"), ContentsCode = 1, Tid = 5i) # "all" can be dropped from the list
+ApiData(4861, Region = list("all", "03*"), ContentsCode = 1, Tid = 5i)  # same as above
+ApiData(04861, Region = list("item", c("0811", "0301")), ContentsCode = 1, Tid = 5i)
+
+
+##### Using data from SCB to illustrate returnMetaFrames
+urlSCB <- "http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy"
+mf <- ApiData(urlSCB, returnMetaFrames = TRUE)
+names(mf)              # All the variable names
+attr(mf, "text")       # Corresponding text information as attribute
+mf$ContentsCode        # Data frame for the fifth variable (alternatively  mf[[5]])
+attr(mf,"elimination") # Finding variables that can be eliminated
+ApiData(urlSCB,        # Eliminating all variables that can be eliminated (line below)
+        Region = FALSE, Civilstand = FALSE, Alder = FALSE,  Kon = FALSE,
+        ContentsCode  = "BE0101N1", # Selecting a single ContentsCode by text input
+        Tid = TRUE)                 # Choosing all possible values of Tid.
+ 
+               
+##### Using data from Statfi to illustrate us of input by variable labels (valueTexts)
+urlStatfi <- "http://pxnet2.stat.fi/PXWeb/api/v1/en/StatFin/vrm/kuol/statfin_kuol_pxt_010.px"
+ApiData(urlStatfi, returnMetaFrames = TRUE)$Tiedot
+ApiData(urlStatfi, Alue = FALSE, Vuosi = TRUE, Tiedot = "Population")  # same as Tiedot = '15' 
 }
 }
