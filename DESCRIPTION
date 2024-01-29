@@ -1,8 +1,8 @@
 Package: PxWebApiData
 Type: Package
 Title: PX-Web Data by API
-Version: 0.8.0
-Date: 2023-03-23
+Version: 0.9.0
+Date: 2024-01-29
 Authors@R: c(person("Øyvind", "Langsrud", role = c("aut", "cre"), email = "oyl@ssb.no"),
              person("Jan", "Bruusgaard", role = c("aut")),
              person("Solveig", "Bjørkholt", role = c("ctb")),
@@ -18,10 +18,10 @@ URL: https://github.com/statisticsnorway/PxWebApiData
 BugReports: https://github.com/statisticsnorway/PxWebApiData/issues
 RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2023-03-23 11:36:53 UTC; oyl
+Packaged: 2024-01-29 10:11:02 UTC; oyl
 Author: Øyvind Langsrud [aut, cre],
   Jan Bruusgaard [aut],
   Solveig Bjørkholt [ctb],
   Susie Jentoft [ctb]
 Repository: CRAN
-Date/Publication: 2023-03-26 21:50:08 UTC
+Date/Publication: 2024-01-29 13:30:15 UTC
