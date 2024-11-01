@@ -12,7 +12,7 @@
 
 <meta name="author" content="Øyvind Langsrud, Jan Bruusgaard, Solveig Bjørkholt and Susie Jentoft" />
 
-<meta name="date" content="2024-01-29" />
+<meta name="date" content="2024-11-01" />
 
 <title>Introduction to PxWebApiData</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">Introduction to PxWebApiData</h1>
 <h4 class="author">Øyvind Langsrud, Jan Bruusgaard, Solveig Bjørkholt
 and Susie Jentoft</h4>
-<h4 class="date">2024-01-29</h4>
+<h4 class="date">2024-11-01</h4>
 
 
 
@@ -368,23 +368,23 @@ version.</p>
              region            contents year  value
 1 Oslo municipality Number of residents 2000 504348
 2 Oslo municipality Number of residents 2002 508134
-3 Oslo municipality Number of residents 2022 696712
-4 Oslo municipality Number of residents 2023 705945
+3 Oslo municipality Number of residents 2023 705945
+4 Oslo municipality Number of residents 2024 714630
 5         Stavanger Number of residents 2000 106804
 6         Stavanger Number of residents 2002 108271
-7         Stavanger Number of residents 2022 138778
-8         Stavanger Number of residents 2023 140012
+7         Stavanger Number of residents 2023 140012
+8         Stavanger Number of residents 2024 142897
 
 $dataset
   Region ContentsCode  Tid  value
 1   0301      Bosatte 2000 504348
 2   0301      Bosatte 2002 508134
-3   0301      Bosatte 2022 696712
-4   0301      Bosatte 2023 705945
+3   0301      Bosatte 2023 705945
+4   0301      Bosatte 2024 714630
 5   1103      Bosatte 2000 106804
 6   1103      Bosatte 2002 108271
-7   1103      Bosatte 2022 138778
-8   1103      Bosatte 2023 140012</code></pre>
+7   1103      Bosatte 2023 140012
+8   1103      Bosatte 2024 142897</code></pre>
 <p>To return a single dataset with only labels use the function
 <code>ApiData1</code>. The function <code>Apidata2</code> returns only
 id’s. To return a dataset with both labels and id’s in one dataframe use
@@ -394,12 +394,12 @@ id’s. To return a dataset with both labels and id’s in one dataframe use
 <pre><code>             region            contents year Region ContentsCode  Tid  value
 1 Oslo municipality Number of residents 2000   0301      Bosatte 2000 504348
 2 Oslo municipality Number of residents 2002   0301      Bosatte 2002 508134
-3 Oslo municipality Number of residents 2022   0301      Bosatte 2022 696712
-4 Oslo municipality Number of residents 2023   0301      Bosatte 2023 705945
+3 Oslo municipality Number of residents 2023   0301      Bosatte 2023 705945
+4 Oslo municipality Number of residents 2024   0301      Bosatte 2024 714630
 5         Stavanger Number of residents 2000   1103      Bosatte 2000 106804
 6         Stavanger Number of residents 2002   1103      Bosatte 2002 108271
-7         Stavanger Number of residents 2022   1103      Bosatte 2022 138778
-8         Stavanger Number of residents 2023   1103      Bosatte 2023 140012</code></pre>
+7         Stavanger Number of residents 2023   1103      Bosatte 2023 140012
+8         Stavanger Number of residents 2024   1103      Bosatte 2024 142897</code></pre>
 </div>
 <div id="specification-by-true-false-and-imaginary-values-e.g.-3i." class="section level2">
 <h2>Specification by TRUE, FALSE and imaginary values (e.g. 3i).</h2>
@@ -412,32 +412,36 @@ obtained by FALSE. An imaginary value corresponds to filter
 <p>To show either label version or id version</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>                         contents year      value
-1 Area of urban settlements (km²) 2021    2233.47
-2 Area of urban settlements (km²) 2022    2250.94
-3 Area of urban settlements (km²) 2023    2266.99
-4             Number of residents 2021 4443243.00
-5             Number of residents 2022 4485236.00
-6             Number of residents 2023 4554562.00</code></pre>
+1 Area of urban settlements (km²) 2022    2250.94
+2 Area of urban settlements (km²) 2023    2266.99
+3 Area of urban settlements (km²) 2024    2279.97
+4             Number of residents 2022 4485236.00
+5             Number of residents 2023 4554562.00
+6             Number of residents 2024 4619969.00</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>  ContentsCode  Tid      value
-1        Areal 2021    2233.47
-2        Areal 2022    2250.94
-3        Areal 2023    2266.99
-4      Bosatte 2021 4443243.00
-5      Bosatte 2022 4485236.00
-6      Bosatte 2023 4554562.00</code></pre>
+1        Areal 2022    2250.94
+2        Areal 2023    2266.99
+3        Areal 2024    2279.97
+4      Bosatte 2022 4485236.00
+5      Bosatte 2023 4554562.00
+6      Bosatte 2024 4619969.00</code></pre>
 </div>
 <div id="show-additional-information" class="section level2">
 <h2>Show additional information</h2>
 <p><code>comment</code> list additional dataset information: Title,
 latest update and source.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(x)</span></code></pre></div>
-<pre><code>                                                                  label 
-&quot;04861: Area and population of urban settlements, by contents and year&quot; 
-                                                                 source 
-                                                    &quot;Statistics Norway&quot; 
-                                                                updated 
-                                                 &quot;2023-12-12T07:00:00Z&quot; </code></pre>
+<pre><code>                                                                  label
+&quot;04861: Area and population of urban settlements, by contents and year&quot;
+                                                                 source
+                                                    &quot;Statistics Norway&quot;
+                                                                updated
+                                                 &quot;2024-10-01T06:00:00Z&quot;
+                                                                tableid
+                                                                &quot;04861&quot;
+                                                               contents
+                     &quot;04861: Area and population of urban settlements,&quot;</code></pre>
 </div>
 <div id="obtaining-meta-data" class="section level2">
 <h2>Obtaining meta data</h2>
@@ -499,6 +503,7 @@ $Tid
 20   2021       2021
 21   2022       2022
 22   2023       2023
+ [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 1 rows ]
 
 attr(,&quot;text&quot;)
       Region ContentsCode          Tid 
@@ -522,14 +527,31 @@ aggregated timeseries for the new Norwegian municipality structure from
 <code>/no</code>. That returns labels in Norwegian instead of in
 English.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ApiData</span>(<span class="st">&quot;http://data.ssb.no/api/v0/no/table/07459&quot;</span>,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">Region =</span> <span class="fu">list</span>(<span class="st">&quot;agg:KommSummer&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;K-3001&quot;</span>, <span class="st">&quot;K-3002&quot;</span>)),</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">Region =</span> <span class="fu">list</span>(<span class="st">&quot;agg:KommSummer&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;K-3101&quot;</span>, <span class="st">&quot;K-3103&quot;</span>)),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">Tid =</span> 4i,</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">Alder =</span> <span class="fu">list</span>(<span class="st">&quot;agg:TodeltGrupperingB&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;H17&quot;</span>, <span class="st">&quot;H18&quot;</span>)),</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">Kjonn =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>No internet connection or resource not available: Error in FUN(X[[i]], ...) : 
-  Assertion on &#39;dataset&#39; failed: Must be of type &#39;list&#39;, not &#39;character&#39;.</code></pre>
-<pre><code>NULL</code></pre>
+<pre><code>$`07459: Befolkning, etter region, kjønn, alder, statistikkvariabel og år`
+  region   kjønn             alder statistikkvariabel   år value
+1 Halden Kvinner           0-17 år           Personer 2021  2978
+2 Halden Kvinner           0-17 år           Personer 2022  2937
+3 Halden Kvinner           0-17 år           Personer 2023  2933
+4 Halden Kvinner           0-17 år           Personer 2024  2944
+5 Halden Kvinner 18 år eller eldre           Personer 2021 12587
+6 Halden Kvinner 18 år eller eldre           Personer 2022 12626
+7 Halden Kvinner 18 år eller eldre           Personer 2023 12787
+ [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 25 rows ]
+
+$dataset
+  Region Kjonn Alder ContentsCode  Tid value
+1 K-3101     2   H17    Personer1 2021  2978
+2 K-3101     2   H17    Personer1 2022  2937
+3 K-3101     2   H17    Personer1 2023  2933
+4 K-3101     2   H17    Personer1 2024  2944
+5 K-3101     2   H18    Personer1 2021 12587
+6 K-3101     2   H18    Personer1 2022 12626
+7 K-3101     2   H18    Personer1 2023 12787
+ [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 25 rows ]</code></pre>
 <p>There are two limitations in the PxWebApi using these filters.</p>
 <ol style="list-style-type: decimal">
 <li>The name of the filter and the id’s are not shown in metadata, only
@@ -545,14 +567,14 @@ elements as input, it is easier to query the value pool. This means that
 <p>In this example Region is the value pool and Fylker (counties) is the
 value set. As <code>vs:Fylker</code> is redundant, both will return the
 same:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  Region <span class="ot">=</span> <span class="fu">list</span>(<span class="st">&quot;vs:Fylker&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;01&quot;</span>,<span class="st">&quot;02&quot;</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  Region <span class="ot">=</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;01&quot;</span>,<span class="st">&quot;02&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  Region <span class="ot">=</span> <span class="fu">list</span>(<span class="st">&quot;vs:Fylker&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;01&quot;</span>,<span class="st">&quot;02&quot;</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  Region <span class="ot">=</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;01&quot;</span>,<span class="st">&quot;02&quot;</span>))</span></code></pre></div>
 </div>
 <div id="return-the-api-query-as-json" class="section level2">
 <h2>Return the API query as JSON</h2>
 <p>In PxWebApi the original query is formulated as JSON. Using the
 parameter returnApiQuery is useful for debugging.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ApiData</span>(<span class="st">&quot;http://data.ssb.no/api/v0/en/table/04861&quot;</span>,  <span class="at">returnApiQuery =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ApiData</span>(<span class="st">&quot;http://data.ssb.no/api/v0/en/table/04861&quot;</span>,  <span class="at">returnApiQuery =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>{
   &quot;query&quot;: [
     {
@@ -573,7 +595,7 @@ parameter returnApiQuery is useful for debugging.</p>
       &quot;code&quot;: &quot;Tid&quot;,
       &quot;selection&quot;: {
         &quot;filter&quot;: &quot;item&quot;,
-        &quot;values&quot;: [&quot;2000&quot;, &quot;2022&quot;, &quot;2023&quot;]
+        &quot;values&quot;: [&quot;2000&quot;, &quot;2023&quot;, &quot;2024&quot;]
       }
     }
   ],
@@ -593,32 +615,32 @@ available by http GET. The data is most easily retrieved with the
 parameter <code>getDataByGET = TRUE</code> in the <code>ApiData</code>
 function. This dataset is from Statistics Norway’s Economic trends
 forecasts.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">GetApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/dataset/934516.json?lang=en&quot;</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">GetApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/dataset/934516.json?lang=en&quot;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>   year                                         contents value
-1  2023                           Gross domestic product   0.2
-2  2023                              GDP Mainland Norway   0.7
-3  2023                                 Employed persons   1.3
-4  2023                        Unemployment rate (level)   3.6
-5  2023                      Wages per standard man-year   5.6
-6  2023                       Consumer price index (CPI)   5.6
-7  2023                                          CPI-ATE   6.3
-8  2023                                   Housing prices  -0.6
-9  2023                        Money market rate (level)   4.2
-10 2023 Import-weighted NOK exchange rate (44 countries)   8.7
-11 2024                           Gross domestic product   2.2
-12 2024                              GDP Mainland Norway   0.9
-13 2024                                 Employed persons   0.1
-14 2024                        Unemployment rate (level)   3.9
-15 2024                      Wages per standard man-year   5.4
+1  2024                           Gross domestic product   1.0
+2  2024                              GDP Mainland Norway   0.7
+3  2024                                 Employed persons   0.5
+4  2024                        Unemployment rate (level)   4.1
+5  2024                      Wages per standard man-year   5.3
+6  2024                       Consumer price index (CPI)   3.4
+7  2024                                          CPI-ATE   3.9
+8  2024                                   Housing prices   2.5
+9  2024                        Money market rate (level)   4.7
+10 2024 Import-weighted NOK exchange rate (44 countries)   1.0
+11 2025                           Gross domestic product   1.3
+12 2025                              GDP Mainland Norway   2.1
+13 2025                                 Employed persons   0.7
+14 2025                        Unemployment rate (level)   4.1
+15 2025                      Wages per standard man-year   4.6
  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 25 rows ]</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(x)</span></code></pre></div>
-<pre><code>                                                                          label 
-&quot;12880: Main economic indicators. Accounts and forecasts, by year and contents&quot; 
-                                                                         source 
-                                                            &quot;Statistics Norway&quot; 
-                                                                        updated 
-                                                         &quot;2023-12-08T07:00:00Z&quot; </code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(x)</span></code></pre></div>
+<pre><code>                                                                          label
+&quot;12880: Main economic indicators. Accounts and forecasts, by year and contents&quot;
+                                                                         source
+                                                            &quot;Statistics Norway&quot;
+                                                                        updated
+                                                         &quot;2024-09-13T06:00:00Z&quot;</code></pre>
 </div>
 <div id="eurostat-data" class="section level2">
 <h2>Eurostat data</h2>
@@ -629,12 +651,12 @@ this package to obtain data from Eurostat by using
 <p>This example shows HICP total index, latest two periods for EU and
 Norway. See <a href="https://wikis.ec.europa.eu/display/EUROSTATHELP/API+Statistics+-+data+query">Eurostat</a>
 for more.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>urlEurostat <span class="ot">&lt;-</span> <span class="fu">paste0</span>(   <span class="co"># Here the long url is split into several lines using paste0 </span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r&quot;</span>, </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;?format=JSON&amp;lang=EN&amp;lastTimePeriod=2&amp;coicop=CP00&amp;geo=NO&amp;geo=EU&quot;</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>urlEurostat</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>urlEurostat <span class="ot">&lt;-</span> <span class="fu">paste0</span>(   <span class="co"># Here the long url is split into several lines using paste0 </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r&quot;</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;?format=JSON&amp;lang=EN&amp;lastTimePeriod=2&amp;coicop=CP00&amp;geo=NO&amp;geo=EU&quot;</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>urlEurostat</span></code></pre></div>
 <pre><code>[1] &quot;https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r?format=JSON&amp;lang=EN&amp;lastTimePeriod=2&amp;coicop=CP00&amp;geo=NO&amp;geo=EU&quot;</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GetApiData12</span>(urlEurostat)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">GetApiData12</span>(urlEurostat)</span></code></pre></div>
 <pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
 <pre><code>  Time frequency                         Unit of measure
 1        Monthly Moving 12 months average rate of change
@@ -652,10 +674,10 @@ for more.</p>
 3                                                                                                           Norway
 4                                                                                                           Norway
      Time freq         unit coicop geo    time value
-1 2023-11    M RCH_MV12MAVR   CP00  EU 2023-11   6.9
-2 2023-12    M RCH_MV12MAVR   CP00  EU 2023-12   6.4
-3 2023-11    M RCH_MV12MAVR   CP00  NO 2023-11   5.9
-4 2023-12    M RCH_MV12MAVR   CP00  NO 2023-12   5.8</code></pre>
+1 2024-08    M RCH_MV12MAVR   CP00  EU 2024-08   3.1
+2 2024-09    M RCH_MV12MAVR   CP00  EU 2024-09   2.8
+3 2024-08    M RCH_MV12MAVR   CP00  NO 2024-08   3.4
+4 2024-09    M RCH_MV12MAVR   CP00  NO 2024-09   3.4</code></pre>
 </div>
 <div id="practical-example" class="section level2">
 <h2>Practical example</h2>
@@ -668,58 +690,67 @@ personel. Having obtained the relevant table, table 07964, we create the
 link <a href="https://data.ssb.no/api/v0/no/table/07964/" class="uri">https://data.ssb.no/api/v0/no/table/07964/</a></p></li>
 <li><p>Load the package.</p></li>
 </ol>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PxWebApiData)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PxWebApiData)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Check which variables that exist in the data.</li>
 </ol>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/no/table/07964/&quot;</span>,</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">returnMetaFrames =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(variables)</span></code></pre></div>
-<pre><code>## [1] &quot;NACE2007&quot;     &quot;ContentsCode&quot; &quot;Tid&quot;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/no/table/07964/&quot;</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">returnMetaFrames =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(variables)</span></code></pre></div>
+<pre><code>[1] &quot;NACE2007&quot;     &quot;ContentsCode&quot; &quot;Tid&quot;         </code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Check which values each variable contains.</li>
 </ol>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/no/table/07964/&quot;</span>,</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">returnMetaData =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">1</span>]]<span class="sc">$</span>values</span></code></pre></div>
-<pre><code>##  [1] &quot;A-N&quot;       &quot;A03&quot;       &quot;B05-B09&quot;   &quot;B06_B09.1&quot; &quot;C&quot;         &quot;C10-C11&quot;  
-##  [7] &quot;C13&quot;       &quot;C14-C15&quot;   &quot;C16&quot;       &quot;C17&quot;       &quot;C18&quot;       &quot;C19-C20&quot;  
-## [13] &quot;C21&quot;       &quot;C22&quot;       &quot;C23&quot;       &quot;C24&quot;       &quot;C25&quot;       &quot;C26&quot;      
-## [19] &quot;C26.3&quot;     &quot;C26.5&quot;     &quot;C27&quot;       &quot;C28&quot;       &quot;C29&quot;       &quot;C30&quot;      
-## [25] &quot;C30.1&quot;     &quot;C31&quot;       &quot;C32&quot;       &quot;C32.5&quot;     &quot;C33&quot;       &quot;D35&quot;      
-## [31] &quot;E36-E39&quot;   &quot;F41-F43&quot;   &quot;G-N&quot;       &quot;G46&quot;       &quot;H49-H53&quot;   &quot;J58&quot;      
-## [37] &quot;J58.2&quot;     &quot;J59-J60&quot;   &quot;J61&quot;       &quot;J62&quot;       &quot;J63&quot;       &quot;K64-K66&quot;  
-## [43] &quot;M70&quot;       &quot;M71&quot;       &quot;M72&quot;      
-##  [ reached getOption(&quot;max.print&quot;) -- omitted 2 entries ]</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">2</span>]]<span class="sc">$</span>values</span></code></pre></div>
-<pre><code>## [1] &quot;EnhetTot&quot;           &quot;EnheterFoU&quot;         &quot;FoUpersonale&quot;      
-## [4] &quot;KvinneligFoUpers&quot;   &quot;FoUPersonaleUoHutd&quot; &quot;FoUPersonaleDoktor&quot;
-## [7] &quot;FoUArsverk&quot;         &quot;FoUArsverkPers&quot;     &quot;FoUArsverkUtd&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">3</span>]]<span class="sc">$</span>values</span></code></pre></div>
-<pre><code>##  [1] &quot;2007&quot; &quot;2008&quot; &quot;2009&quot; &quot;2010&quot; &quot;2011&quot; &quot;2012&quot; &quot;2013&quot; &quot;2014&quot; &quot;2015&quot; &quot;2016&quot;
-## [11] &quot;2017&quot; &quot;2018&quot; &quot;2019&quot; &quot;2020&quot; &quot;2021&quot;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/no/table/07964/&quot;</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">returnMetaData =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">1</span>]]<span class="sc">$</span>values</span></code></pre></div>
+<pre><code> [1] &quot;A-N&quot;       &quot;A03&quot;       &quot;B05-B09&quot;   &quot;B06_B09.1&quot; &quot;C&quot;         &quot;C10-C11&quot;  
+ [7] &quot;C13&quot;       &quot;C14-C15&quot;   &quot;C16&quot;       &quot;C17&quot;       &quot;C18&quot;       &quot;C19-C20&quot;  
+[13] &quot;C21&quot;       &quot;C22&quot;       &quot;C23&quot;       &quot;C24&quot;       &quot;C25&quot;       &quot;C26&quot;      
+[19] &quot;C26.3&quot;     &quot;C26.5&quot;     &quot;C27&quot;       &quot;C28&quot;       &quot;C29&quot;       &quot;C30&quot;      
+[25] &quot;C30.1&quot;     &quot;C31&quot;       &quot;C32&quot;       &quot;C32.5&quot;     &quot;C33&quot;       &quot;D35&quot;      
+[31] &quot;E36-E39&quot;   &quot;F41-F43&quot;   &quot;G-N&quot;       &quot;G46&quot;       &quot;H49-H53&quot;   &quot;J58&quot;      
+[37] &quot;J58.2&quot;     &quot;J59-J60&quot;   &quot;J61&quot;       &quot;J62&quot;       &quot;J63&quot;       &quot;K64-K66&quot;  
+[43] &quot;M70&quot;       &quot;M71&quot;       &quot;M72&quot;      
+ [ reached getOption(&quot;max.print&quot;) -- omitted 2 entries ]</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">2</span>]]<span class="sc">$</span>values</span></code></pre></div>
+<pre><code>[1] &quot;EnhetTot&quot;           &quot;EnheterFoU&quot;         &quot;FoUpersonale&quot;      
+[4] &quot;KvinneligFoUpers&quot;   &quot;FoUPersonaleUoHutd&quot; &quot;FoUPersonaleDoktor&quot;
+[7] &quot;FoUArsverk&quot;         &quot;FoUArsverkPers&quot;     &quot;FoUArsverkUtd&quot;     </code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>values[[<span class="dv">3</span>]]<span class="sc">$</span>values</span></code></pre></div>
+<pre><code> [1] &quot;2007&quot; &quot;2008&quot; &quot;2009&quot; &quot;2010&quot; &quot;2011&quot; &quot;2012&quot; &quot;2013&quot; &quot;2014&quot; &quot;2015&quot; &quot;2016&quot;
+[11] &quot;2017&quot; &quot;2018&quot; &quot;2019&quot; &quot;2020&quot; &quot;2021&quot; &quot;2022&quot;</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Define these variables in the query to sort out the values we
 want.</li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/en/table/07964/&quot;</span>,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Tid =</span> <span class="fu">c</span>(<span class="st">&quot;2019&quot;</span>, <span class="st">&quot;2020&quot;</span>), <span class="co"># Define year to 2019 and 2020</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">NACE2007 =</span> <span class="st">&quot;G-N&quot;</span>, <span class="co"># Define the services sector</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ContentsCode =</span> <span class="fu">c</span>(<span class="st">&quot;KvinneligFoUpers&quot;</span>)) <span class="co"># Define women R&amp;D personell</span></span></code></pre></div>
-<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
-<pre><code>## No internet connection or resource not available: Error in FUN(X[[i]], ...) : 
-##   Assertion on &#39;dataset&#39; failed: Must be of type &#39;list&#39;, not &#39;character&#39;.</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mydata[[<span class="dv">1</span>]] <span class="co"># Extract the first list element, which contains full variable names.</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span></code></pre></div>
-<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">ApiData</span>(<span class="st">&quot;https://data.ssb.no/api/v0/en/table/07964/&quot;</span>,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Tid =</span> <span class="fu">c</span>(<span class="st">&quot;2021&quot;</span>, <span class="st">&quot;2022&quot;</span>), <span class="co"># Define year to 2021 and 2022</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">NACE2007 =</span> <span class="st">&quot;G-N&quot;</span>, <span class="co"># Define the services sector</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ContentsCode =</span> <span class="fu">c</span>(<span class="st">&quot;KvinneligFoUpers&quot;</span>)) <span class="co"># Define women R&amp;D personell</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mydata[[<span class="dv">1</span>]] <span class="co"># Extract the first list element, which contains full variable names.</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydata)</span></code></pre></div>
+<pre><code>  industry (SIC2007)             contents year value
+1     Services total Female R&amp;D personnel 2021  4904
+2     Services total Female R&amp;D personnel 2022  5449</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Show additional information.</li>
 </ol>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(mydata)</span></code></pre></div>
-<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comment</span>(mydata)</span></code></pre></div>
+<pre><code>                                                                                                  label
+&quot;07964: O07964: R&amp;D personnel and R&amp;D full-time equivalents (FTE) in Business Enterprise sector, by industry (SIC2007), contents and year&quot;
+                                                                                                 source
+                                                                                    &quot;Statistics Norway&quot;
+                                                                                                updated
+                                                                                 &quot;2024-02-16T07:00:00Z&quot;
+                                                                                                tableid
+                                                                                                &quot;07964&quot;
+                                                                                               contents
+      &quot;07964: O07964: R&amp;D personnel and R&amp;D full-time equivalents (FTE) in Business Enterprise sector,&quot;</code></pre>
 </div>
 <div id="background" class="section level2">
 <h2>Background</h2>
