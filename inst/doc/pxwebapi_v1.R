@@ -70,10 +70,10 @@ ApiData("https://data.ssb.no/api/v0/no/table/07459",
 
 
 
-## ----eval=TRUE, tidy = FALSE, comment=NA--------------------------------------
-  Region = list("vs:Fylker",c("01","02"))
-  Region = list(c("01","02"))
-
+## ----eval=FALSE, tidy = FALSE, comment=NA-------------------------------------
+#   Region = list("vs:Fylker",c("01","02"))
+#   Region = c("01","02")
+# 
 
 ## ----eval=TRUE, tidy = FALSE, comment=NA--------------------------------------
 ApiData("https://data.ssb.no/api/v0/en/table/04861",  returnApiQuery = TRUE)
